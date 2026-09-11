@@ -1,79 +1,826 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Apresentação</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-            position: relative;
-            max-width: 800px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-        .intro-text {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        .skills-container {
-            position: relative;
-            width: 400px;
-            margin: 0 auto;
-        }
-        .skill {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-color: #ffcc00;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-        }
-        .skill:hover {
-            background-color: #ffaa00;
-        }
-        .skill:nth-child(1) { top: -50px; left: 50%; transform: translateX(-50%); }
-        .skill:nth-child(2) { top: 50px; left: 10%; }
-        .skill:nth-child(3) { top: 50px; right: 10%; }
-        .skill:nth-child(4) { top: 150px; left: 20%; }
-        .skill:nth-child(5) { top: 150px; right: 20%; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de Nelson Camilo de Almeida — sistemas embarcados, IoT, eletrônica, automação, firmware e educação tecnológica." />
+  <meta name="theme-color" content="#07111f" />
+  <title>Nelson Camilo de Almeida | Sistemas Embarcados, IoT e Eletrônica</title>
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0b1728;
+      --card: rgba(14, 30, 49, 0.78);
+      --card-hover: rgba(18, 39, 63, 0.95);
+      --text: #edf6ff;
+      --muted: #9fb2c8;
+      --accent: #4fd1ff;
+      --accent-2: #58f0c2;
+      --line: rgba(122, 174, 215, 0.18);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(79, 209, 255, 0.11), transparent 25rem),
+        radial-gradient(circle at 88% 18%, rgba(88, 240, 194, 0.08), transparent 24rem),
+        linear-gradient(180deg, #06101c 0%, var(--bg) 48%, #081523 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(6, 16, 28, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 160ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: center;
+      gap: 70px;
+      padding: 84px 0 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      color: var(--accent-2);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 850px;
+      font-size: clamp(3rem, 7vw, 6.25rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    h1 .accent {
+      display: block;
+      color: var(--accent);
+    }
+
+    .hero-role {
+      margin: 30px 0 16px;
+      font-size: clamp(1.15rem, 2vw, 1.55rem);
+      font-weight: 650;
+      color: #d7e8f8;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      font-weight: 750;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(79, 209, 255, 0.55);
+    }
+
+    .btn-primary {
+      color: #04121b;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-color: transparent;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.035);
+      color: var(--text);
+    }
+
+    .portrait-wrap {
+      position: relative;
+      width: min(100%, 360px);
+      margin-inline: auto;
+    }
+
+    .portrait-wrap::before,
+    .portrait-wrap::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .portrait-wrap::before {
+      inset: -16px;
+      border: 1px solid rgba(79, 209, 255, 0.25);
+    }
+
+    .portrait-wrap::after {
+      inset: -34px;
+      border: 1px dashed rgba(88, 240, 194, 0.15);
+    }
+
+    .portrait {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 6px solid rgba(255, 255, 255, 0.05);
+      box-shadow: var(--shadow);
+      background: var(--bg-soft);
+    }
+
+    .status-card {
+      position: absolute;
+      right: -26px;
+      bottom: 22px;
+      max-width: 215px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(7, 17, 31, 0.9);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .status-card strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 60px;
+      align-items: start;
+      margin-bottom: 38px;
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: var(--accent-2);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(17, 36, 58, 0.7), rgba(10, 24, 40, 0.78));
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.02);
+    }
+
+    .skill-card {
+      min-height: 225px;
+      padding: 28px;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      background: var(--card-hover);
+      border-color: rgba(79, 209, 255, 0.34);
+    }
+
+    .skill-number {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+    }
+
+    .skill-card h3,
+    .project-card h3 {
+      margin: 28px 0 10px;
+      font-size: 1.3rem;
+    }
+
+    .skill-card p,
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tech-strip {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      color: #bfd0e2;
+      font-size: 0.78rem;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card {
+      position: relative;
+      padding: 30px;
+      overflow: hidden;
+    }
+
+    .project-card::after {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      right: -70px;
+      top: -70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79, 209, 255, 0.17), transparent 65%);
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      color: var(--accent-2);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .project-card h3 {
+      margin-top: 20px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 22px;
+      text-decoration: none;
+      font-weight: 750;
+      color: var(--accent);
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .split-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .split-panel {
+      padding: clamp(30px, 5vw, 56px);
+    }
+
+    .split-panel + .split-panel {
+      border-left: 1px solid var(--line);
+      background: rgba(79, 209, 255, 0.025);
+    }
+
+    .split-panel h3 {
+      margin: 0 0 16px;
+      font-size: 1.65rem;
+    }
+
+    .split-panel p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .principles {
+      margin: 26px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .principles li {
+      position: relative;
+      padding-left: 24px;
+      color: #c9d8e8;
+    }
+
+    .principles li::before {
+      content: "↳";
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+    }
+
+    .contact {
+      text-align: center;
+      padding-bottom: 110px;
+    }
+
+    .contact-box {
+      padding: clamp(38px, 7vw, 72px);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(79, 209, 255, 0.13), transparent 24rem),
+        linear-gradient(145deg, rgba(14, 31, 51, 0.88), rgba(8, 22, 37, 0.92));
+    }
+
+    .contact-box h2 {
+      max-width: 800px;
+      margin-inline: auto;
+    }
+
+    .contact-box p {
+      max-width: 670px;
+      margin: 20px auto 28px;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .footer-inner a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 64px;
+        padding-top: 64px;
+      }
+
+      .hero-copy {
+        max-width: 680px;
+      }
+
+      .portrait-wrap {
+        width: min(72vw, 340px);
+      }
+
+      .section-head,
+      .split-card {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .section-head {
+        margin-bottom: 34px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .split-panel + .split-panel {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .site-header {
+        position: static;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 0;
+      }
+
+      .nav-links {
+        gap: 14px 18px;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 15vw, 4.7rem);
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .status-card {
+        right: -4px;
+        bottom: -18px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 22px 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <img src="sua_foto_aqui.jpg" alt="Minha Foto" class="profile-pic">
-        <p class="intro-text">Olá! Eu sou [Seu Nome], um profissional dedicado e apaixonado pelas minhas áreas de atuação. Aqui você pode conhecer um pouco mais sobre minhas habilidades.</p>
-        
-        <div class="skills-container">
-            <a href="habilidade1.html" class="skill">Habilidade 1</a>
-            <a href="habilidade2.html" class="skill">Habilidade 2</a>
-            <a href="habilidade3.html" class="skill">Habilidade 3</a>
-            <a href="habilidade4.html" class="skill">Habilidade 4</a>
-            <a href="habilidade5.html" class="skill">Habilidade 5</a>
-        </div>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="#top">NC<span>.</span></a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#atuacao">Atuação</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#educacao">Educação</a>
+        <a href="#contato">Contato</a>
+      </nav>
     </div>
+  </header>
+
+  <main id="top">
+    <section class="shell hero" aria-labelledby="hero-title">
+      <div>
+        <div class="eyebrow">Engenharia que conecta hardware e software</div>
+        <h1 id="hero-title">Nelson Camilo <span class="accent">de Almeida</span></h1>
+        <p class="hero-role">Sistemas Embarcados • IoT • Eletrônica • Automação • Educação Tecnológica</p>
+        <p class="hero-copy">
+          Desenvolvo soluções que aproximam sensores, eletrônica, firmware, conectividade e software.
+          Gosto especialmente de projetos em que é preciso entender o sistema por inteiro — do sinal
+          elétrico ao dado, do protótipo à aplicação real.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projetos">Ver projetos</a>
+          <a class="btn btn-secondary" href="https://github.com/ncamilo" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+
+      <div class="portrait-wrap" aria-label="Foto de Nelson Camilo de Almeida">
+        <img
+          class="portrait"
+          src="https://avatars.githubusercontent.com/u/8071543?v=4"
+          alt="Nelson Camilo de Almeida"
+          width="360"
+          height="360"
+        />
+        <div class="status-card">
+          <strong>Hardware + Firmware + Conectividade</strong>
+          Integração de ponta a ponta.
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Sobre mim</p>
+            <h2>Engenharia aplicada, da bancada ao produto.</h2>
+          </div>
+          <p class="section-copy">
+            Sou engenheiro e desenvolvedor com atuação em sistemas embarcados, eletrônica, IoT,
+            automação e integração de dispositivos. Minha experiência combina desenvolvimento de
+            firmware, instrumentação, comunicação sem fio, análise de hardware e software para
+            aquisição, visualização e tratamento de dados. Também atuo com ensino e formação
+            tecnológica, levando problemas reais de engenharia para aulas, treinamentos e atividades práticas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="atuacao">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Áreas de atuação</p>
+            <h2>Tecnologia vista como sistema, não como peças isoladas.</h2>
+          </div>
+          <p class="section-copy">
+            Meu trabalho costuma estar exatamente na fronteira entre eletrônica e software: medir,
+            controlar, comunicar, diagnosticar e transformar sinais físicos em informação útil.
+          </p>
+        </div>
+
+        <div class="grid skills-grid">
+          <article class="card skill-card">
+            <span class="skill-number">01</span>
+            <h3>Sistemas Embarcados</h3>
+            <p>Firmware, periféricos, interfaces, protocolos, temporização e integração de sensores e atuadores.</p>
+            <div class="tech-strip">
+              <span class="chip">ESP32</span><span class="chip">ESP-IDF</span><span class="chip">STM32</span><span class="chip">PIC</span><span class="chip">C/C++</span>
+            </div>
+          </article>
+
+          <article class="card skill-card">
+            <span class="skill-number">02</span>
+            <h3>IoT & Conectividade</h3>
+            <p>Dispositivos conectados, telemetria, gateways e redes para aquisição e transporte de dados.</p>
+            <div class="tech-strip">
+              <span class="chip">MQTT</span><span class="chip">LoRaWAN</span><span class="chip">Zigbee</span><span class="chip">Wi-Fi</span><span class="chip">NB-IoT</span>
+            </div>
+          </article>
+
+          <article class="card skill-card">
+            <span class="skill-number">03</span>
+            <h3>Eletrônica & Hardware</h3>
+            <p>Análise de circuitos, interfaces de potência e sinal, instrumentação, diagnóstico e desenvolvimento eletrônico.</p>
+            <div class="tech-strip">
+              <span class="chip">KiCad</span><span class="chip">Sensores</span><span class="chip">PCBs</span><span class="chip">Instrumentação</span>
+            </div>
+          </article>
+
+          <article class="card skill-card">
+            <span class="skill-number">04</span>
+            <h3>Automação</h3>
+            <p>Integração entre dispositivos, controle, instrumentação e sistemas supervisórios em aplicações reais.</p>
+            <div class="tech-strip">
+              <span class="chip">MQTT</span><span class="chip">Grafana</span><span class="chip">InfluxDB</span><span class="chip">Home Assistant</span>
+            </div>
+          </article>
+
+          <article class="card skill-card">
+            <span class="skill-number">05</span>
+            <h3>Software & Dados</h3>
+            <p>Ferramentas para teste, automação, comunicação, visualização de dados e apoio ao desenvolvimento de hardware.</p>
+            <div class="tech-strip">
+              <span class="chip">Python</span><span class="chip">Flask</span><span class="chip">Serial</span><span class="chip">APIs</span>
+            </div>
+          </article>
+
+          <article class="card skill-card">
+            <span class="skill-number">06</span>
+            <h3>Educação Tecnológica</h3>
+            <p>Conteúdo técnico, aulas, treinamentos e experiências hands-on conectando teoria, laboratório e engenharia.</p>
+            <div class="tech-strip">
+              <span class="chip">Eletrônica</span><span class="chip">IoT</span><span class="chip">Automação</span><span class="chip">Embedded</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Projetos</p>
+            <h2>Alguns caminhos que já explorei.</h2>
+          </div>
+          <p class="section-copy">
+            Uma seleção de repositórios que representa diferentes momentos e áreas da minha trajetória técnica.
+            O GitHub completo reúne outros experimentos, estudos e projetos.
+          </p>
+        </div>
+
+        <div class="grid projects-grid">
+          <article class="card project-card">
+            <div class="project-meta"><span>ESP32</span><span>Embedded</span></div>
+            <h3>ESP32 Dual Core Programming</h3>
+            <p>Experimentos e desenvolvimento com programação nos dois núcleos do ESP32.</p>
+            <a class="project-link" href="https://github.com/ncamilo/ESP32-Dual-Core-Programming" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-meta"><span>Zigbee</span><span>Wireless</span></div>
+            <h3>Simple Zigbee</h3>
+            <p>Exploração de comunicação Zigbee e redes sem fio para dispositivos embarcados.</p>
+            <a class="project-link" href="https://github.com/ncamilo/simple-zigbee" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-meta"><span>LoRaWAN</span><span>IoT</span></div>
+            <h3>LoRaWAN Node</h3>
+            <p>Projeto voltado a nós LoRaWAN e comunicação de longa distância para aplicações IoT.</p>
+            <a class="project-link" href="https://github.com/ncamilo/LoRaWAN-node" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-meta"><span>LoRa</span><span>Gateway</span></div>
+            <h3>LoRaWAN Gateway</h3>
+            <p>Estudos e implementação de infraestrutura de gateway para redes LoRaWAN.</p>
+            <a class="project-link" href="https://github.com/ncamilo/LoRaWanGateway" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-meta"><span>Automotivo</span><span>Dados</span></div>
+            <h3>DataLogger Eletrônica Automotiva</h3>
+            <p>Projeto ligado à aquisição de dados e eletrônica aplicada ao contexto automotivo.</p>
+            <a class="project-link" href="https://github.com/ncamilo/DataLogger.Eletronica-Automotiva" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-meta"><span>Instrumentação</span><span>Software</span></div>
+            <h3>MyOscilloscope</h3>
+            <p>Experimentação em instrumentação e visualização de sinais, conectando hardware e software.</p>
+            <a class="project-link" href="https://github.com/ncamilo/MyOscilloscope" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+          </article>
+        </div>
+
+        <div class="hero-actions" style="margin-top: 28px;">
+          <a class="btn btn-secondary" href="https://github.com/ncamilo?tab=repositories" target="_blank" rel="noopener noreferrer">Ver todos os repositórios ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="educacao">
+      <div class="shell">
+        <div class="card split-card">
+          <div class="split-panel">
+            <p class="section-kicker">Engenharia + Educação</p>
+            <h3>Conhecimento técnico que volta para a sala de aula.</h3>
+            <p>
+              Além de desenvolver e analisar sistemas, atuo na formação técnica e tecnológica.
+              A experiência de bancada ajuda a transformar conceitos abstratos em atividades práticas,
+              protótipos, medições e problemas de engenharia que fazem sentido para quem está aprendendo.
+            </p>
+          </div>
+          <div class="split-panel">
+            <p class="section-kicker">Como trabalho</p>
+            <h3>Construir, testar, entender e ensinar.</h3>
+            <ul class="principles">
+              <li>Entender o problema antes de escolher a tecnologia.</li>
+              <li>Medir e validar antes de assumir.</li>
+              <li>Integrar hardware e software desde o início.</li>
+              <li>Documentar para tornar o conhecimento reutilizável.</li>
+              <li>Transformar experiência prática em aprendizado.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact">
+      <div class="shell">
+        <div class="card contact-box">
+          <p class="section-kicker">Contato</p>
+          <h2>Tem um projeto envolvendo eletrônica, firmware, IoT ou automação?</h2>
+          <p>
+            Meu GitHub reúne projetos, experimentos e referências técnicas. É também o melhor ponto de partida
+            para conhecer meu trabalho e entrar em contato.
+          </p>
+          <a class="btn btn-primary" href="https://github.com/ncamilo" target="_blank" rel="noopener noreferrer">Visitar meu GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>© 2026 Nelson Camilo de Almeida.</span>
+      <span>Engenharia • Sistemas Embarcados • IoT • Educação</span>
+    </div>
+  </footer>
 </body>
 </html>
