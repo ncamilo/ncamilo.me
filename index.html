@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfólio de Nelson Camilo de Almeida — sistemas embarcados, IoT, eletrônica, automação, firmware e educação tecnológica." />
+  <meta name="description" content="Portfólio de Nelson Camilo de Almeida — sistemas embarcados, IoT, eletrônica, automação, firmware, Edge AI e educação tecnológica." />
+  <meta name="author" content="Nelson Camilo de Almeida" />
   <meta name="theme-color" content="#07111f" />
+  <link rel="canonical" href="https://ncamilo.me/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nelson Camilo de Almeida | Engenharia, Sistemas Embarcados e IoT" />
+  <meta property="og:description" content="Engenharia aplicada conectando hardware, firmware, sensores, conectividade, Edge AI e software." />
+  <meta property="og:url" content="https://ncamilo.me/" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/8071543?v=4" />
+  <meta property="og:locale" content="pt_BR" />
+
   <title>Nelson Camilo de Almeida | Sistemas Embarcados, IoT e Eletrônica</title>
 
   <style>
@@ -23,13 +33,8 @@
       --max: 1180px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -42,9 +47,7 @@
       line-height: 1.65;
     }
 
-    a {
-      color: inherit;
-    }
+    a { color: inherit; }
 
     .shell {
       width: min(calc(100% - 40px), var(--max));
@@ -74,9 +77,7 @@
       letter-spacing: 0.04em;
     }
 
-    .brand span {
-      color: var(--accent);
-    }
+    .brand span { color: var(--accent); }
 
     .nav-links {
       display: flex;
@@ -91,9 +92,7 @@
       transition: color 160ms ease;
     }
 
-    .nav-links a:hover {
-      color: var(--accent);
-    }
+    .nav-links a:hover { color: var(--accent); }
 
     .hero {
       min-height: calc(100vh - 72px);
@@ -244,9 +243,7 @@
       margin-bottom: 2px;
     }
 
-    section {
-      padding: 90px 0;
-    }
+    section { padding: 90px 0; }
 
     .section-head {
       display: grid;
@@ -284,9 +281,7 @@
       gap: 18px;
     }
 
-    .skills-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    .skills-grid { grid-template-columns: repeat(3, 1fr); }
 
     .card {
       border: 1px solid var(--line);
@@ -342,14 +337,15 @@
       background: rgba(255, 255, 255, 0.025);
     }
 
-    .projects-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
 
     .project-card {
       position: relative;
       padding: 30px;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 310px;
     }
 
     .project-card::after {
@@ -375,21 +371,49 @@
       letter-spacing: 0.08em;
     }
 
-    .project-card h3 {
-      margin-top: 20px;
+    .project-card h3 { margin-top: 20px; }
+
+    .project-card .tech-strip { margin-top: 18px; }
+
+    .project-footer {
+      margin-top: auto;
+      padding-top: 24px;
     }
 
     .project-link {
       display: inline-block;
-      margin-top: 22px;
       text-decoration: none;
       font-weight: 750;
       color: var(--accent);
     }
 
-    .project-link:hover {
-      text-decoration: underline;
+    .project-link:hover { text-decoration: underline; }
+
+    .project-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #bfd0e2;
+      font-size: 0.88rem;
+      font-weight: 650;
     }
+
+    .project-note::before {
+      content: "●";
+      color: var(--accent-2);
+      font-size: 0.65rem;
+    }
+
+    .portfolio-note {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .portfolio-note strong { color: var(--text); }
 
     .split-card {
       display: grid;
@@ -398,9 +422,7 @@
       overflow: hidden;
     }
 
-    .split-panel {
-      padding: clamp(30px, 5vw, 56px);
-    }
+    .split-panel { padding: clamp(30px, 5vw, 56px); }
 
     .split-panel + .split-panel {
       border-left: 1px solid var(--line);
@@ -488,13 +510,8 @@
         padding-top: 64px;
       }
 
-      .hero-copy {
-        max-width: 680px;
-      }
-
-      .portrait-wrap {
-        width: min(72vw, 340px);
-      }
+      .hero-copy { max-width: 680px; }
+      .portrait-wrap { width: min(72vw, 340px); }
 
       .section-head,
       .split-card {
@@ -502,13 +519,8 @@
         gap: 28px;
       }
 
-      .section-head {
-        margin-bottom: 34px;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .section-head { margin-bottom: 34px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
 
       .split-panel + .split-panel {
         border-left: 0;
@@ -517,13 +529,8 @@
     }
 
     @media (max-width: 640px) {
-      .shell {
-        width: min(calc(100% - 28px), var(--max));
-      }
-
-      .site-header {
-        position: static;
-      }
+      .shell { width: min(calc(100% - 28px), var(--max)); }
+      .site-header { position: static; }
 
       .nav {
         align-items: flex-start;
@@ -531,26 +538,14 @@
         padding: 18px 0;
       }
 
-      .nav-links {
-        gap: 14px 18px;
-      }
-
-      .hero {
-        padding-top: 54px;
-      }
-
-      h1 {
-        font-size: clamp(3rem, 15vw, 4.7rem);
-      }
+      .nav-links { gap: 14px 18px; }
+      .hero { padding-top: 54px; }
+      h1 { font-size: clamp(3rem, 15vw, 4.7rem); }
 
       .skills-grid,
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
+      .projects-grid { grid-template-columns: 1fr; }
 
-      section {
-        padding: 70px 0;
-      }
+      section { padding: 70px 0; }
 
       .status-card {
         right: -4px;
@@ -566,13 +561,8 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *, *::before, *::after {
-        transition-duration: 0.01ms !important;
-      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
@@ -595,7 +585,7 @@
       <div>
         <div class="eyebrow">Engenharia que conecta hardware e software</div>
         <h1 id="hero-title">Nelson Camilo <span class="accent">de Almeida</span></h1>
-        <p class="hero-role">Sistemas Embarcados • IoT • Eletrônica • Automação • Educação Tecnológica</p>
+        <p class="hero-role">Sistemas Embarcados • IoT • Eletrônica • Automação • Edge AI • Educação Tecnológica</p>
         <p class="hero-copy">
           Desenvolvo soluções que aproximam sensores, eletrônica, firmware, conectividade e software.
           Gosto especialmente de projetos em que é preciso entender o sistema por inteiro — do sinal
@@ -632,7 +622,7 @@
           <p class="section-copy">
             Sou engenheiro e desenvolvedor com atuação em sistemas embarcados, eletrônica, IoT,
             automação e integração de dispositivos. Minha experiência combina desenvolvimento de
-            firmware, instrumentação, comunicação sem fio, análise de hardware e software para
+            firmware, instrumentação, comunicação sem fio, análise de hardware, Edge AI e software para
             aquisição, visualização e tratamento de dados. Também atuo com ensino e formação
             tecnológica, levando problemas reais de engenharia para aulas, treinamentos e atividades práticas.
           </p>
@@ -692,10 +682,10 @@
 
           <article class="card skill-card">
             <span class="skill-number">05</span>
-            <h3>Software & Dados</h3>
-            <p>Ferramentas para teste, automação, comunicação, visualização de dados e apoio ao desenvolvimento de hardware.</p>
+            <h3>Software, Dados & Edge AI</h3>
+            <p>Ferramentas para teste, automação, APIs, visão computacional, visualização de dados e apoio ao desenvolvimento de hardware.</p>
             <div class="tech-strip">
-              <span class="chip">Python</span><span class="chip">Flask</span><span class="chip">Serial</span><span class="chip">APIs</span>
+              <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">YOLO</span><span class="chip">APIs</span>
             </div>
           </article>
 
@@ -715,61 +705,95 @@
       <div class="shell">
         <div class="section-head">
           <div>
-            <p class="section-kicker">Projetos</p>
-            <h2>Alguns caminhos que já explorei.</h2>
+            <p class="section-kicker">Projetos selecionados</p>
+            <h2>Engenharia demonstrada por projetos reais.</h2>
           </div>
           <p class="section-copy">
-            Uma seleção de repositórios que representa diferentes momentos e áreas da minha trajetória técnica.
-            O GitHub completo reúne outros experimentos, estudos e projetos.
+            Esta seleção prioriza trabalhos autorais e cases que representam minha atuação atual.
+            Repositórios de terceiros, forks e materiais usados apenas como estudo não são apresentados aqui como projetos próprios.
           </p>
         </div>
 
         <div class="grid projects-grid">
           <article class="card project-card">
-            <div class="project-meta"><span>ESP32</span><span>Embedded</span></div>
-            <h3>ESP32 Dual Core Programming</h3>
-            <p>Experimentos e desenvolvimento com programação nos dois núcleos do ESP32.</p>
-            <a class="project-link" href="https://github.com/ncamilo/ESP32-Dual-Core-Programming" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+            <div class="project-meta"><span>ESP32-S3</span><span>Firmware</span></div>
+            <h3>Medidor de Altura, Peso e Bioimpedância</h3>
+            <p>Migração e reestruturação de firmware para ESP-IDF, integrando display e touch, LVGL, sensor de altura, balança serial, bioimpedância, USB, NVS e controle de LEDs.</p>
+            <div class="tech-strip">
+              <span class="chip">ESP-IDF</span><span class="chip">C++</span><span class="chip">LVGL</span><span class="chip">UART</span><span class="chip">NVS</span>
+            </div>
+            <div class="project-footer">
+              <a class="project-link" href="https://github.com/ncamilo/medidor_ap_nd_esp_idf" target="_blank" rel="noopener noreferrer">Ver código no GitHub ↗</a>
+            </div>
           </article>
 
           <article class="card project-card">
-            <div class="project-meta"><span>Zigbee</span><span>Wireless</span></div>
-            <h3>Simple Zigbee</h3>
-            <p>Exploração de comunicação Zigbee e redes sem fio para dispositivos embarcados.</p>
-            <a class="project-link" href="https://github.com/ncamilo/simple-zigbee" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+            <div class="project-meta"><span>Edge AI</span><span>Computer Vision</span></div>
+            <h3>Edge AI com Raspberry Pi e YOLOv8</h3>
+            <p>Serviço de inferência de visão computacional executado na borda, com API REST, containerização e integração de resultados em JSON ou imagem anotada.</p>
+            <div class="tech-strip">
+              <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">YOLOv8</span><span class="chip">Podman</span><span class="chip">Raspberry Pi</span>
+            </div>
+            <div class="project-footer">
+              <a class="project-link" href="https://github.com/ncamilo/edge-ai" target="_blank" rel="noopener noreferrer">Ver código no GitHub ↗</a>
+            </div>
           </article>
 
           <article class="card project-card">
-            <div class="project-meta"><span>LoRaWAN</span><span>IoT</span></div>
-            <h3>LoRaWAN Node</h3>
-            <p>Projeto voltado a nós LoRaWAN e comunicação de longa distância para aplicações IoT.</p>
-            <a class="project-link" href="https://github.com/ncamilo/LoRaWAN-node" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+            <div class="project-meta"><span>ESP32</span><span>Industrial</span></div>
+            <h3>Controle de Esteira em ESP-IDF</h3>
+            <p>Migração de um firmware de controle para ESP-IDF com comunicação serial, controle de entradas e saídas, integração com eletrônica de potência e validação em hardware real.</p>
+            <div class="tech-strip">
+              <span class="chip">ESP-IDF</span><span class="chip">FreeRTOS</span><span class="chip">Protocolos</span><span class="chip">I/O</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-note">Case profissional · código privado</span>
+            </div>
           </article>
 
           <article class="card project-card">
-            <div class="project-meta"><span>LoRa</span><span>Gateway</span></div>
-            <h3>LoRaWAN Gateway</h3>
-            <p>Estudos e implementação de infraestrutura de gateway para redes LoRaWAN.</p>
-            <a class="project-link" href="https://github.com/ncamilo/LoRaWanGateway" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+            <div class="project-meta"><span>ESP32-C3</span><span>BLE HID</span></div>
+            <h3>C3 AirMouse</h3>
+            <p>Dispositivo de apresentação baseado em ESP32-C3, BLE HID e sensor inercial, com movimento de cursor, botões e arquitetura preparada para evolução do produto.</p>
+            <div class="tech-strip">
+              <span class="chip">ESP32-C3</span><span class="chip">ESP-IDF</span><span class="chip">BLE</span><span class="chip">MPU6050</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-note">Case em desenvolvimento · código privado</span>
+            </div>
           </article>
 
           <article class="card project-card">
-            <div class="project-meta"><span>Automotivo</span><span>Dados</span></div>
-            <h3>DataLogger Eletrônica Automotiva</h3>
-            <p>Projeto ligado à aquisição de dados e eletrônica aplicada ao contexto automotivo.</p>
-            <a class="project-link" href="https://github.com/ncamilo/DataLogger.Eletronica-Automotiva" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+            <div class="project-meta"><span>LoRa</span><span>Redes</span></div>
+            <h3>Arquitetura LoRa Mesh</h3>
+            <p>Experimentação e desenvolvimento de nós, proxies e topologias de comunicação sem fio para ampliar cobertura e transportar dados em aplicações IoT.</p>
+            <div class="tech-strip">
+              <span class="chip">LoRa</span><span class="chip">Mesh</span><span class="chip">IoT</span><span class="chip">Gateways</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-note">Case técnico · componentes públicos e privados</span>
+            </div>
           </article>
 
           <article class="card project-card">
-            <div class="project-meta"><span>Instrumentação</span><span>Software</span></div>
-            <h3>MyOscilloscope</h3>
-            <p>Experimentação em instrumentação e visualização de sinais, conectando hardware e software.</p>
-            <a class="project-link" href="https://github.com/ncamilo/MyOscilloscope" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+            <div class="project-meta"><span>PCB</span><span>Engineering Tools</span></div>
+            <h3>GerberAnalysis</h3>
+            <p>Ferramenta voltada à análise de arquivos de fabricação de PCB, aproximando software e engenharia eletrônica em um fluxo de apoio a projeto e verificação.</p>
+            <div class="tech-strip">
+              <span class="chip">Gerber</span><span class="chip">PCB</span><span class="chip">Automação</span><span class="chip">Análise</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-note">Case profissional · código privado</span>
+            </div>
           </article>
         </div>
 
+        <div class="portfolio-note">
+          <strong>Sobre o GitHub:</strong> meu perfil também contém forks, referências, provas de conceito e materiais usados em estudo. Eles fazem parte da trajetória técnica, mas esta página destaca apenas trabalhos autorais ou cases em que minha participação é explicitamente identificada.
+        </div>
+
         <div class="hero-actions" style="margin-top: 28px;">
-          <a class="btn btn-secondary" href="https://github.com/ncamilo?tab=repositories" target="_blank" rel="noopener noreferrer">Ver todos os repositórios ↗</a>
+          <a class="btn btn-secondary" href="https://github.com/ncamilo?tab=repositories" target="_blank" rel="noopener noreferrer">Explorar meu GitHub ↗</a>
         </div>
       </div>
     </section>
@@ -805,12 +829,14 @@
       <div class="shell">
         <div class="card contact-box">
           <p class="section-kicker">Contato</p>
-          <h2>Tem um projeto envolvendo eletrônica, firmware, IoT ou automação?</h2>
+          <h2>Tem um projeto envolvendo eletrônica, firmware, IoT, automação ou Edge AI?</h2>
           <p>
-            Meu GitHub reúne projetos, experimentos e referências técnicas. É também o melhor ponto de partida
-            para conhecer meu trabalho e entrar em contato.
+            O ncamilo.me é meu ponto central de apresentação profissional. No GitHub estão os projetos públicos,
+            experimentos e referências técnicas que complementam este portfólio.
           </p>
-          <a class="btn btn-primary" href="https://github.com/ncamilo" target="_blank" rel="noopener noreferrer">Visitar meu GitHub ↗</a>
+          <div class="hero-actions" style="justify-content: center; margin-top: 0;">
+            <a class="btn btn-primary" href="https://github.com/ncamilo" target="_blank" rel="noopener noreferrer">Visitar meu GitHub ↗</a>
+          </div>
         </div>
       </div>
     </section>
@@ -819,7 +845,7 @@
   <footer>
     <div class="shell footer-inner">
       <span>© 2026 Nelson Camilo de Almeida.</span>
-      <span>Engenharia • Sistemas Embarcados • IoT • Educação</span>
+      <span>Engenharia • Sistemas Embarcados • IoT • Edge AI • Educação</span>
     </div>
   </footer>
 </body>
